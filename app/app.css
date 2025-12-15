@@ -13,3 +13,13 @@ body {
     color-scheme: dark;
   }
 }
+
+.gradient-line {
+  background: linear-gradient(
+    90deg,
+    #1976d2,
+    #42a5f5,
+    transparent
+  );
+  transform: rotate(-12deg);
+}
