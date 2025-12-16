@@ -7,17 +7,16 @@ const InformDivision = () => {
   return (
     <Box
       sx={{
-        width: "95%",
-        height: "90vh",
-        bgcolor: "white",
+        mt: 2,
+        bgcolor: "#fff",
         borderRadius: 4,
         p: 2,
       }}
     >
-      <Box display="flex" alignItems="center" gap={1}>
-        <Typography>مدیریت کاربران</Typography>
-        <WestIcon />
-        <Typography>اطلاعات کاربران</Typography>
+      <Box display="flex" alignItems="center" gap={1} mb={2}>
+        <Typography fontSize={14}>مدیریت کاربران</Typography>
+        <WestIcon fontSize="small" />
+        <Typography fontSize={14}>اطلاعات کاربران</Typography>
       </Box>
 
       <StackInform />

@@ -4,9 +4,9 @@ const CenterHeader = () => {
   return (
     <Box
       sx={{
-        width: "20%",
-        borderTop: "4px solid #14b8a6", // teal-500
-        borderTopLeftRadius: "16px",
+        flex: 1,
+        borderTop: "4px solid #10b981",
+        borderTopLeftRadius: 24,
       }}
     />
   );

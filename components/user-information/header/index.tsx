@@ -1,22 +1,28 @@
 import { Box } from "@mui/material";
-import MainHeader from "./MainHeader";
 import CenterHeader from "./CenterHeader";
+import MainHeader from "./MainHeader";
 import ModeButton from "./ModeButton";
 
-const Header = () => {
+interface HeaderProps {
+  darkMode: boolean;
+  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Header = ({ darkMode, setDarkMode }: HeaderProps) => {
   return (
     <Box
       sx={{
-        bgcolor: "white",
-        width: "95%",
+        bgcolor: "#fff",
+        width: "100%",
         height: 56,
         borderRadius: 999,
         display: "flex",
+        overflow: "hidden",
       }}
     >
       <MainHeader />
       <CenterHeader />
-      <ModeButton />
+      <ModeButton darkMode={darkMode} setDarkMode={setDarkMode} />
     </Box>
   );
 };

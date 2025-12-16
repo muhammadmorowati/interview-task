@@ -1,22 +1,30 @@
 import { Box } from "@mui/material";
-import DarkModeToggle from "./DarkModeToggle";
+import CenterHeader from "./CenterHeader";
+import MainHeader from "./MainHeader";
+import ModeButton from "./ModeButton";
 
-const ModeButton = () => {
+interface HeaderProps {
+  darkMode: boolean;
+  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Header = ({ darkMode, setDarkMode }: HeaderProps) => {
   return (
     <Box
       sx={{
-        width: "10%",
-        borderBottom: "4px solid #2dd4bf",
-        borderBottomRightRadius: "16px",
+        bgcolor: "#fff",
+        width: "100%",
+        height: 56,
+        borderRadius: 999,
         display: "flex",
-        alignItems: "center",
-        justifyContent: "space-around",
+        overflow: "hidden",
       }}
     >
-      <DarkModeToggle />
-      <Box component="img" src="/iran-flag.png" width={40} />
+      <MainHeader />
+      <CenterHeader />
+      <ModeButton darkMode={darkMode} setDarkMode={setDarkMode} />
     </Box>
   );
 };
 
-export default ModeButton;
+export default Header;
