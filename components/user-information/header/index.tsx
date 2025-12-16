@@ -1,17 +1,24 @@
-import ModeButton from './ModeButton'
-import MainHeader from './MainHeader'
-import CenterHeader from './CenterHeader'
+import { Box } from "@mui/material";
+import MainHeader from "./MainHeader";
+import CenterHeader from "./CenterHeader";
+import ModeButton from "./ModeButton";
 
 const Header = () => {
   return (
-    <div className='bg-white w-[95%] flex h-14 rounded-full'>
-      
-     
+    <Box
+      sx={{
+        bgcolor: "white",
+        width: "95%",
+        height: 56,
+        borderRadius: 999,
+        display: "flex",
+      }}
+    >
       <MainHeader />
-       <CenterHeader />
+      <CenterHeader />
       <ModeButton />
-    </div>
-  )
-}
+    </Box>
+  );
+};
 
-export default Header
+export default Header;

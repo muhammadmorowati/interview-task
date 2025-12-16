@@ -1,21 +1,29 @@
-import WestIcon from '@mui/icons-material/West';
-import StackInform from './StackInform';
-import StackInformTwo from './StackInformTwo';
+import { Box, Typography } from "@mui/material";
+import WestIcon from "@mui/icons-material/West";
+import StackInform from "./StackInform";
+import StackInformTwo from "./StackInformTwo";
 
 const InformDivision = () => {
   return (
-      <div className="w-[95%] bg-white rounded-2xl h-[90vh]">
-          <span>
-              مدیریت کاربران
-          </span>
-          <WestIcon />
-          <span>
-              اطلاعات کاربران
-          </span>
-          <StackInform />
-          <StackInformTwo />
-    </div>
-  )
-}
+    <Box
+      sx={{
+        width: "95%",
+        height: "90vh",
+        bgcolor: "white",
+        borderRadius: 4,
+        p: 2,
+      }}
+    >
+      <Box display="flex" alignItems="center" gap={1}>
+        <Typography>مدیریت کاربران</Typography>
+        <WestIcon />
+        <Typography>اطلاعات کاربران</Typography>
+      </Box>
 
-export default InformDivision
+      <StackInform />
+      <StackInformTwo />
+    </Box>
+  );
+};
+
+export default InformDivision;

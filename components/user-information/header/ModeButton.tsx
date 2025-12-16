@@ -1,15 +1,22 @@
-import { Button } from '@mui/material'
-import React from 'react'
-import CustomizedSwitches from './DarkModeButton'
+import { Box } from "@mui/material";
+import DarkModeToggle from "./DarkModeToggle";
 
 const ModeButton = () => {
   return (
-    <div className='w-[10%] border-b-4 border-teal-400 rounded-br-2xl flex'>
-     
-      <CustomizedSwitches />
-       <img src="public\iran-flag.png" alt="iran-flag" width={45} />
-    </div>
-  )
-}
+    <Box
+      sx={{
+        width: "10%",
+        borderBottom: "4px solid #2dd4bf",
+        borderBottomRightRadius: "16px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-around",
+      }}
+    >
+      <DarkModeToggle />
+      <Box component="img" src="/iran-flag.png" width={40} />
+    </Box>
+  );
+};
 
-export default ModeButton
+export default ModeButton;

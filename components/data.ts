@@ -1,0 +1,28 @@
+export const users = [
+  {
+    id: 1,
+    name: "علی متین",
+    role: "Admin",
+    type: "شخصی",
+    identity: "حقوقی",
+    nationalId: "665012345",
+    authType: "درگاه دولت",
+    email: "me@alimatn.ir",
+    phone: "0990 250 50 74",
+    approveStatus: "رد شده",
+    status: "فعال",
+  },
+  {
+    id: 2,
+    name: "بهار گلستانی",
+    role: "Supervisor",
+    type: "شخصی",
+    identity: "حقوقی",
+    nationalId: "665012345",
+    authType: "سامانه",
+    email: "me@alimatn.ir",
+    phone: "0990 250 50 74",
+    approveStatus: "تایید شده",
+    status: "فعال",
+  },
+];

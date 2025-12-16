@@ -1,12 +1,10 @@
 "use client";
-import React, { useState } from "react";
+
+import { useState } from "react";
 import { styled } from "@mui/material/styles";
 import Switch from "@mui/material/Switch";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 
-// Styled Switch با آیکون خورشید/ماه جای جاشون عوض شده
 const DarkModeSwitch = styled(Switch)(({ theme }) => ({
   width: 62,
   height: 34,
@@ -64,29 +62,25 @@ const DarkModeSwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-export default function DarkModeToggle() {
-  const [darkMode, setDarkMode] = useState(false); // پیش‌فرض روشن
+const DarkModeToggle = () => {
+  const [darkMode, setDarkMode] = useState(false);
 
   const theme = createTheme({
     palette: {
       mode: darkMode ? "dark" : "light",
     },
+    direction: "rtl",
   });
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <FormGroup>
-        <FormControlLabel
-          control={
-            <DarkModeSwitch
-              checked={darkMode}
-              onChange={() => setDarkMode(!darkMode)}
-            />
-          }
-          label="Dark Mode"
-        />
-      </FormGroup>
+      <DarkModeSwitch
+        checked={darkMode}
+        onChange={() => setDarkMode((prev) => !prev)}
+      />
     </ThemeProvider>
   );
-}
+};
+
+export default DarkModeToggle;

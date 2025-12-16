@@ -1,18 +1,19 @@
-import Header from './header'
-import InformDivision from './inform'
-import SideBar from './sidebar'
+import { Box } from "@mui/material";
+import Header from "./header";
+import InformDivision from "./inform";
+import SideBar from "./sidebar";
+
 
 const UserInformation = () => {
   return (
-      <div dir="rtl" className="bg-slate-200 h-screen flex">
-  <SideBar />
+    <Box dir="rtl" sx={{ display: "flex", height: "100vh", bgcolor: "#f1f5f9" }}>
+      <SideBar />
+      <Box sx={{ flex: 1, p: 2 }}>
+        <Header />
+        <InformDivision />
+      </Box>
+    </Box>
+  );
+};
 
-  <div className="flex-1 flex flex-col items-center justify-center">
-    <Header />
-    <InformDivision />
-  </div>
-</div>
-  )
-}
-
-export default UserInformation
+export default UserInformation;

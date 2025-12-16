@@ -1,56 +1,35 @@
-import { FormControlLabel, Radio, RadioGroup } from '@mui/material';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Stack from '@mui/material/Stack';
-import { styled } from '@mui/material/styles';
-import SaveAltIcon from '@mui/icons-material/SaveAlt';
-import SyncIcon from '@mui/icons-material/Sync';
-import PresentToAllIcon from '@mui/icons-material/PresentToAll';
-import FormatLineSpacingIcon from '@mui/icons-material/FormatLineSpacing';
+import { Box, Chip, FormControlLabel, Paper, Radio, RadioGroup, Stack, styled } from "@mui/material";
+import { DataGrid, type GridColDef } from "@mui/x-data-grid";
+import { users } from "components/data";
 import PlaylistRemoveIcon from '@mui/icons-material/PlaylistRemove';
-import { DataGrid, type GridColDef } from '@mui/x-data-grid';
+import FormatLineSpacingIcon from '@mui/icons-material/FormatLineSpacing';
+import PresentToAllIcon from '@mui/icons-material/PresentToAll';
+import SyncIcon from '@mui/icons-material/Sync';
+import SaveAltIcon from '@mui/icons-material/SaveAlt';
 
-const columns: GridColDef<(typeof rows)[number]>[] = [
-  { field: 'id', headerName: 'ID', width: 90 },
+const columns: GridColDef[] = [
+  { field: "id", headerName: "ردیف", width: 70 },
+  { field: "name", headerName: "نام کاربری", width: 160 },
+  { field: "type", headerName: "مشخصات کاربر", width: 130 },
+  { field: "role", headerName: "نوع کاربر", width: 130 },
   {
-    field: 'firstName',
-    headerName: 'First name',
-    width: 150,
-    editable: true,
+    field: "approveStatus",
+    headerName: "وضعیت تایید",
+    width: 140,
+    renderCell: (p) => (
+      <Chip
+        label={p.value}
+        color={p.value === "تایید شده" ? "success" : "error"}
+        size="small"
+      />
+    ),
   },
   {
-    field: 'lastName',
-    headerName: 'Last name',
-    width: 150,
-    editable: true,
+    field: "status",
+    headerName: "وضعیت",
+    width: 100,
+    renderCell: () => <Chip label="فعال" color="success" size="small" />,
   },
-  {
-    field: 'age',
-    headerName: 'Age',
-    type: 'number',
-    width: 110,
-    editable: true,
-  },
-  {
-    field: 'fullName',
-    headerName: 'Full name',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
-    width: 160,
-    valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
-  },
-];
-
-const rows = [
-  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 14 },
-  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 31 },
-  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 31 },
-  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 11 },
-  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
 ];
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -61,13 +40,16 @@ const Item = styled(Paper)(({ theme }) => ({
   ...theme.applyStyles('dark', {
     backgroundColor: '#e2e8f0',
   }),
+    display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
 }));
 
-export default function StackInform() {
+const StackInform = () => {
   return (
-    <Box sx={{ width: '95%' }}>
-      <Stack spacing={2}>
-              <Item className='flex'>
+    <Box sx={{ width: "100%", mt: 2 }}>
+          <Stack spacing={2}>
+               <Item className='flex'>
                   <span>
                   نمایش انتخابی:
                   </span>
@@ -98,25 +80,17 @@ export default function StackInform() {
                       
                   </span>
         </Item>
-              <Item>
-                    <Box sx={{ height: 400, width: '100%' }}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: 5,
-            },
-          },
-        }}
-        pageSizeOptions={[5]}
-        checkboxSelection
-        disableRowSelectionOnClick
-      />
-    </Box>
-        </Item>
+
+        <DataGrid
+          rows={users}
+          columns={columns}
+          pageSizeOptions={[5]}
+          autoHeight
+          disableRowSelectionOnClick
+        />
       </Stack>
     </Box>
   );
-}
+};
+
+export default StackInform;

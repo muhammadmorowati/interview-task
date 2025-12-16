@@ -1,10 +1,15 @@
+import { Box } from "@mui/material";
 
 const CenterHeader = () => {
   return (
-      <div className="w-[20%] border-t-4 border-teal-500 rounded-tl-2xl">
-          
-    </div>
-  )
-}
+    <Box
+      sx={{
+        width: "20%",
+        borderTop: "4px solid #14b8a6", // teal-500
+        borderTopLeftRadius: "16px",
+      }}
+    />
+  );
+};
 
-export default CenterHeader
+export default CenterHeader;
