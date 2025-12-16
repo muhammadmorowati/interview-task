@@ -14,7 +14,6 @@ import { users } from "components/data";
 import EditUserModal from "./edit/CreateUserModal";
 import UserActions from "./edit/UserAction";
 
-
 const columns: GridColDef[] = [
   { field: "id", headerName: "ردیف", width: 70 },
   { field: "name", headerName: "نام کاربری", width: 160 },
@@ -48,8 +47,9 @@ const StackInform = () => {
 
   return (
     <Stack spacing={2}>
-      {/* فیلتر */}
-      <Paper sx={{ p: 1 }}>
+      {/* هدر با رادیوباتن‌ها کنار مدیریت کاربران */}
+      <Paper sx={{ p: 1, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <Typography variant="h6">مدیریت کاربران</Typography>
         <RadioGroup
           row
           value={filter}
@@ -62,14 +62,7 @@ const StackInform = () => {
         </RadioGroup>
       </Paper>
 
-      {/* اکشن‌ها */}
-      <UserActions
-        onAdd={() => console.log("ADD USER")}
-        onEdit={() => setOpenEdit(true)}
-        disabledEdit={!selectedUser}
-      />
-
-      {/* جدول */}
+      {/* جدول کاربران */}
       <DataGrid
         rows={users}
         columns={columns}
@@ -77,6 +70,22 @@ const StackInform = () => {
         pageSizeOptions={[5]}
         onRowClick={handleRowClick}
         disableRowSelectionOnClick
+      />
+
+      {/* اطلاعات کاربر در یک سطر */}
+      {selectedUser && (
+        <Paper sx={{ p: 2, display: "flex", gap: 4 }}>
+          <Typography>نام کاربری: {selectedUser.name}</Typography>
+          <Typography>نقش: {selectedUser.role}</Typography>
+          <Typography>وضعیت تایید: {selectedUser.approveStatus}</Typography>
+        </Paper>
+      )}
+
+      {/* اکشن‌ها */}
+      <UserActions
+        onAdd={() => console.log("ADD USER")}
+        onEdit={() => setOpenEdit(true)}
+        disabledEdit={!selectedUser}
       />
 
       {/* مودال ویرایش */}

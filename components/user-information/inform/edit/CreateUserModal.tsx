@@ -36,19 +36,20 @@ const EditUserModal = ({ open, onClose, initialData }: Props) => {
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
       <DialogTitle>ویرایش اطلاعات کاربر</DialogTitle>
 
-      <Formik
-        enableReinitialize
-        initialValues={{
-          name: initialData?.name || "",
-          role: initialData?.role || "",
-          email: initialData?.email || "",
-        }}
-        validationSchema={validationSchema}
-        onSubmit={(values) => {
-          console.log("EDIT USER:", values);
-          onClose();
-        }}
-      >
+      <Formik<UserFormValues>
+  enableReinitialize
+  initialValues={{
+    name: initialData?.name ?? "",
+    role: initialData?.role ?? "",
+    email: initialData?.email ?? "",
+  }}
+  validationSchema={validationSchema}
+  onSubmit={(values) => {
+    console.log("EDIT USER:", values);
+    onClose();
+  }}
+>
+
         {({ values, handleChange, touched, errors }) => (
           <Form>
             <DialogContent>

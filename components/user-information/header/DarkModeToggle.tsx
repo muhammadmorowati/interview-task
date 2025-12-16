@@ -1,7 +1,7 @@
 import { styled } from "@mui/material/styles";
 import Switch from "@mui/material/Switch";
 
-const DarkModeSwitch = styled(Switch)(({
+const DarkModeSwitch = styled(Switch)(() => ({
   width: 62,
   height: 34,
   padding: 7,
